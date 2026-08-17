@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# App runtime
+*.csv
+*.db
+*.sqlite3
+
+# Models are downloaded on first run, never committed
+*.onnx
+models/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Never commit real photos or client data
+Proof/
+Proofs/
+Raw/
+*.jpg
+*.JPG
+*.jpeg
+*.png

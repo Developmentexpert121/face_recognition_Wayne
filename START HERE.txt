@@ -1,0 +1,63 @@
+QR PHOTO SORTER (OPTIMISED)
+===========================
+
+FIRST TIME ONLY
+---------------
+1. Double-click   setup.bat
+   Takes a few minutes and needs internet. It installs everything and then
+   checks both name-tag readers are working. Wait for "Setup complete".
+
+   If it says Python 3.12 is missing, install it from python.org and TICK
+   "Add python.exe to PATH" on the first screen, then run setup.bat again.
+
+EVERY TIME AFTER THAT
+---------------------
+2. Double-click   run_sorter.bat
+
+
+USING IT
+--------
+1 - Photos to sort   : your PROOFS folder (the small versions)
+2 - Proof folder     : the folder containing 'sorted' and 'culled'
+                       (usually named "Proof")
+Full-size (optional) : your full-size/raw folder. Improves accuracy.
+
+Then click "Preview (dry run)" FIRST. It shows exactly what would happen
+and moves nothing. Only click "Sort photos" once the preview looks right.
+
+
+WHAT TO EXPECT
+--------------
+A shoot of ~1,200 photos takes roughly 15-25 minutes depending on your PC.
+
+You will see two stages:
+   Step 1  reads QR codes on every photo        (about a minute)
+   Step 2  reads the printed ID number, but only on photos still
+           unidentified after step 1            (a few minutes)
+
+Both stages are always on. Step 2 is what catches tags whose QR code is
+bent, blurred or angled - it recovers students step 1 cannot.
+
+
+IMPORTANT
+---------
+* Proofs must be FULL SIZE, around 2000x3000. A proof shrunk to 1000x666
+  makes the tag about 15 pixels wide, which no software can read.
+
+* The tag must be VISIBLE in at least one photo per student. On drape
+  shoots the drape often covers it - pin it to the drape, or take one
+  tag shot before the drape goes on.
+
+* Tags shot straight-on read best. Heavily angled or curved tags are the
+  ones most likely to need step 2.
+
+
+IF SOMETHING LOOKS WRONG
+------------------------
+* "Step 2 UNAVAILABLE" in red  -> the text reader did not install.
+  Run setup.bat again. Without it you will miss students.
+
+* Very few students found      -> check the Proof folder is the one that
+  directly contains 'sorted' and 'culled'.
+
+* Nothing sorts at all         -> check your proofs are full size (above).
