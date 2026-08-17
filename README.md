@@ -1,4 +1,17 @@
-# QR Photo Sorter
+# Face Recognition — Photo Sorter & Team Photo ID
+
+Two tools that share one face engine (`face_engine/`):
+
+| Tool | Launcher | What it does |
+|---|---|---|
+| **Photo Sorter** | `run_sorter.bat` | Sorts a school shoot into per-student folders by reading each student's name tag, then matching their remaining photos by face. |
+| **Team Photo ID** | `run_group_photo.bat` | Identifies players in a group/team photo against an enrolled roster. |
+
+Both install from the same `setup.bat` and the same `requirements.txt`.
+
+---
+
+# Photo Sorter
 
 Sorts school photo shoots into per-student folders by reading the name tag each
 student wears, then matching every other photo of them by face.
@@ -65,3 +78,33 @@ the folder containing `sorted`/`culled` (it will also accept the folder above it
   drape often covers it.
 - Nothing is deleted. Tag photos are *copied* into the student folder; the
   original stays in the source as a safety net.
+
+---
+
+# Team Photo ID
+
+Identifies players in a group/team photo. Enrol a roster (one folder of photos
+per player, the folder name carrying their ID), then load a group shot and it
+labels each detected face against that roster.
+
+```
+python run_cli.py --roster PARENT_FOLDER [PARENT_FOLDER ...] --group GROUP.jpg
+```
+
+Or double-click `run_group_photo.bat` for the GUI.
+
+**Storage.** Defaults to a local SQLite file — fully offline, nothing to install.
+Set the `NEON_DATABASE_URL` environment variable to use a shared Neon/Postgres
+database instead, so several machines share one roster. The connection string is
+read from the environment at runtime and is never hardcoded or committed.
+
+`neon_transfer.py` seeds and moves the player database between the two backends.
+
+---
+
+## Repo notes
+
+`face_engine/` is shared by both tools — detection, embedding, matching, and the
+database backends. Only one copy of the sorter is kept here (the current one);
+the older pre-zxing copy that lived alongside Team Photo ID was not carried over,
+since its QR reader is the one that found no tags at all.
